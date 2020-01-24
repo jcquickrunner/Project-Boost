@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a4854ffe177d04d9dbda23e3edabab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rcsThrust: 100
 --- !u!54 &109360607
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,12 +152,12 @@ Rigidbody:
   m_GameObject: {fileID: 1787074098096924151}
   serializedVersion: 2
   m_Mass: 0.1
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 56
   m_CollisionDetection: 0
 --- !u!82 &811336504390038874
 AudioSource:
@@ -170,13 +171,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0030921eb25614344887772983bb07db, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.45
-  m_Pitch: 1
+  m_Volume: 0.06
+  m_Pitch: 0.76
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 111
   DopplerLevel: 1
   MinDistance: 1.3309351
   MaxDistance: 500
