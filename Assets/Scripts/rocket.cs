@@ -11,7 +11,10 @@ public class rocket : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-         thrust = GetComponent<AudioSource>();
+        thrust = GetComponent<AudioSource>();
+       
+
+
     }
 
     // Update is called once per frame
@@ -25,28 +28,39 @@ public class rocket : MonoBehaviour
         {
             print("space pressed");
             rigidBody.AddRelativeForce(Vector3.up);//relative to postition
-            if (!thrust.isPlaying)
-            {
-                thrust.Play();
-            } else
-            {
-                thrust.Stop();
-                
-            }
-            
 
         }
         if (Input.GetKey(KeyCode.A))
         {
             print("rotating left");
             transform.Rotate(Vector3.forward);
-           
-        } else if (Input.GetKey(KeyCode.D))
+
+        }
+        else if (Input.GetKey(KeyCode.D))
         {
             print("Rotating Right");
             transform.Rotate(-Vector3.forward);//- vector forward would work here as well
 
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!thrust.isPlaying)
+            {
+                thrust.Play();
+            }
+            
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            if (thrust.isPlaying)
+            {
+                thrust.Stop();
+            }
+
+        }
 
     }
 }
+     
+
+    
