@@ -5,24 +5,42 @@ using UnityEngine;
 
 public class rocket : MonoBehaviour
 {
+   
     Rigidbody rigidBody;
     AudioSource thrust;
     [SerializeField] float rcsThrust = 100f;
     // Start is called before the first frame update
+    
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
         thrust = GetComponent<AudioSource>();
-       
-
+         
 
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Friendly":
+                break;
+            case "Fuel":
+                
+                break;
+            default:
+                break;
+                
+                
+        }
+    }
     // Update is called once per frame
+  
     void Update()
     {
         ProcessInput();
     }
+   
+
     private void ProcessInput()
     {
         ThrustMovement();
@@ -44,7 +62,7 @@ public class rocket : MonoBehaviour
     private void RocketRotation()
     {
         rigidBody.freezeRotation = true;
-       
+        
         if (Input.GetKey(KeyCode.A))
         {
             print("rotating left");
