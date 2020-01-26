@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class rocket : MonoBehaviour
 {
@@ -22,9 +23,11 @@ public class rocket : MonoBehaviour
     {
         switch (collision.gameObject.tag)
         {
-            case "Friendly":
+            case "Enemy":
+                SceneManager.LoadScene(1);
                 break;
-            case "Fuel":
+            case "Finish":
+                SceneManager.LoadScene(2);
                 
                 break;
             default:
@@ -34,12 +37,19 @@ public class rocket : MonoBehaviour
         }
     }
     // Update is called once per frame
-  
+    
     void Update()
     {
         ProcessInput();
     }
-   
+    public void LoadLevelOne()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+    public void Exit()
+    {
+        Application.Quit();
+    }
 
     private void ProcessInput()
     {
@@ -90,7 +100,7 @@ public class rocket : MonoBehaviour
             }
 
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))// so when you stop pressing space the sound stops
         {
             if (thrust.isPlaying)
             {
