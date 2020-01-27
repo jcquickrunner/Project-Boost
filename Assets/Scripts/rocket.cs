@@ -28,19 +28,24 @@ public class rocket : MonoBehaviour
                 break;
             case "Finish":
                 SceneManager.LoadScene(2);
-                
+
                 break;
             default:
                 break;
-                
-                
+
+
         }
     }
+
     // Update is called once per frame
-    
+
     void Update()
     {
         ProcessInput();
+    }
+    public void LoadMain()
+    {
+        SceneManager.LoadScene(0);
     }
     public void LoadLevelOne()
     {
