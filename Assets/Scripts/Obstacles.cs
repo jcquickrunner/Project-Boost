@@ -15,7 +15,7 @@ public class Obstacles : MonoBehaviour
     }
     private void isObstacle()
     {
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             GetComponent<BoxCollider>().isTrigger = true;
             Destroy(GetComponent<Rigidbody>());

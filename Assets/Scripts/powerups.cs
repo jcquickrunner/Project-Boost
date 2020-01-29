@@ -39,7 +39,7 @@ public class powerups : MonoBehaviour
     }
     private void NextLevel()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKey(KeyCode.Alpha1))
         {
             HandleInput();
         }
