@@ -16,6 +16,8 @@ public class rocket : MonoBehaviour
     [SerializeField] ParticleSystem mainEngineParticles;
     [SerializeField] ParticleSystem successParticles;
     [SerializeField] ParticleSystem deathParticles;
+    ScoreLoader gameStatus;
+    powerups powerUp;
     // Start is called before the first frame update
     enum State {  alive, dying, changing};
     State state = State.alive;
@@ -44,6 +46,10 @@ public class rocket : MonoBehaviour
                 successParticles.Play();
                 thrust.PlayOneShot(transitionToMainMenu);
                 Invoke("LoadMenu", 2f);
+                break;
+            case "PowerUp":
+                
+                powerUp.DestroyPowerUp();
 
                 break;
             default:

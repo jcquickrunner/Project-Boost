@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class CollissionScript : MonoBehaviour
 {
+    ScoreLoader gameStatus;
+    powerups powerUp;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,13 +16,11 @@ public class CollissionScript : MonoBehaviour
     {
         switch (collision.gameObject.tag)
         {
-            case "Enemy":
-                SceneManager.LoadScene(1);
+            case "Player":
+                powerUp.DestroyPowerUp();
+                gameStatus.addToScore();
                 break;
-            case "Finish":
-                SceneManager.LoadScene(2);
-
-                break;
+            
             default:
                 break;
 
