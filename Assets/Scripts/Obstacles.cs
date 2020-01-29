@@ -13,10 +13,19 @@ public class Obstacles : MonoBehaviour
     {
         startingPos = transform.position;
     }
+    private void isObstacle()
+    {
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            GetComponent<BoxCollider>().isTrigger = true;
+            Destroy(GetComponent<Rigidbody>());
+        }
 
+    }
     // Update is called once per frame
     void Update()
     {
+        isObstacle();
         float cycles = Time.time / period;// grows continually from zero
         const float tau = Mathf.PI * 2; //about 6.28
         float rawSinWave = Mathf.Sin(cycles * tau);

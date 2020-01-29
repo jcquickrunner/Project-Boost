@@ -9,36 +9,65 @@ public class powerups : MonoBehaviour
     [SerializeField] AudioClip breakSound;
     [SerializeField]ScoreLoader  gameStatus;
     [SerializeField] TextMeshProUGUI ScoreText;
-
+    enum State { collission, noCollission };
     // Start is called before the first frame update
+    State state2 = State.collission;
+    BoxCollider collision;
     void Start()
     {
-        
+       
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        
         switch (collision.gameObject.tag)
         {
             case "player":
                 HandleHit();
-                
+                AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
                 break;
 
         }
     }
+    public void HandleInput() {
+        state2 = State.noCollission;
+        GetComponent<BoxCollider>().isTrigger = true;
+
+
+
+    }
+    private void NextLevel()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            HandleInput();
+        }
+    }
+
     private void HandleHit()
     {
-        Destroy(gameObject);
-        gameStatus.AddToScore();
+        if (state2 == State.collission)
+        {
+            TriggerParticleVFX();
+            Destroy(gameObject);
+
+
+            gameStatus.AddToScore();
+        }
+        
     }
-    
-      
+    private void TriggerParticleVFX()
+    {
+        GameObject sparkles = Instantiate(powerUPFx, transform.position, transform.rotation);
+        UnityEngine.Object.Destroy(sparkles, 1f);
+    }
 
 
 
-    
-   
+
+
+
 
     public void DestroyPowerUp()
     {
@@ -52,6 +81,7 @@ public class powerups : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        NextLevel();
         gameStatus.renderScoreOnScreen();
     }
 }

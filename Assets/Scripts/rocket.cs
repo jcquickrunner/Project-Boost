@@ -28,6 +28,8 @@ public class rocket : MonoBehaviour
          
 
     }
+
+  
     private void OnCollisionEnter(Collision collision)
     {
         switch (collision.gameObject.tag)
@@ -49,7 +51,7 @@ public class rocket : MonoBehaviour
                 break;
             case "PowerUp":
                 
-                powerUp.DestroyPowerUp();
+                
 
                 break;
             default:
@@ -73,6 +75,7 @@ public class rocket : MonoBehaviour
 
     void Update()
     {
+
         ProcessInput();
     }
     public void LoadMain()
@@ -121,9 +124,10 @@ public class rocket : MonoBehaviour
         
 
     }
-
+    
     private void RocketRotation()
     {
+        
         if (state == State.alive)
         {
             rigidBody.freezeRotation = true;
