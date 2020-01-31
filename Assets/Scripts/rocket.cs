@@ -72,7 +72,10 @@ public class rocket : MonoBehaviour
     }
 
     // Update is called once per frame
-
+    public void story()
+    {
+        SceneManager.LoadScene("Story");
+    }
     void Update()
     {
 

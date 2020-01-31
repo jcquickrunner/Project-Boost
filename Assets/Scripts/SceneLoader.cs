@@ -28,6 +28,9 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
+    public void story(){
+        SceneManager.LoadScene("Story");
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
